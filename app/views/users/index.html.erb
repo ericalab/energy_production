@@ -1,0 +1,31 @@
+<%= link_to "Topページへ",  root_path %>
+
+<%= form_tag(import_users_path, method: :post, multipart: true) do %>
+  <label>ファイル</label>
+  <%= file_field :fileupload, :file %>
+  <%= submit_tag "インポート" %>
+<% end %>
+
+<table>
+  <h2 class="mt-5">受注状況</h2>
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>姓</th>
+      <th>名</th>
+      <th>家族人数</th>
+      <th>子供</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @users.each do |user| %>
+      <tr>
+        <td><%= user.id %></td>
+        <td><%= user.first_name %></td>
+        <td><%= user.last_name %></td>
+        <td><%= user.num_of_people %></td>
+        <td><%= user.has_child %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
