@@ -1,6 +1,8 @@
 <div class="container">
   <h1>ソーラー発電における電気生産量</h1>
-  <p>各家庭の年間平均生産量</p>
+  <p>毎月の平均生産量</p>
+  
+  <%= column_chart @datasets.chart_date, xtitle: "月", ytitle: "生産量", width: "600px", height: "200px" %>
 
   <%= link_to "データ詳細・登録", users_path %>
 </div>

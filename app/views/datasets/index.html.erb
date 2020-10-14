@@ -1,0 +1,43 @@
+<div class="container mx-auto">
+  <div class="row mt-3">
+    <div class="col-6">
+      <%= form_tag(import_datasets_path, method: :post, multipart: true) do %>
+        <h2>データの追加</h2>
+        <%= file_field :fileupload, :file %>
+        <%= submit_tag "インポート" %>
+      <% end %>
+    </div>
+    <div class="col-6">
+      <h4><%= link_to "Topページへ",  root_path %></h4>
+      <h4><%= link_to "顧客一覧へ",  users_path %></h4>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+  <table class="table table-hover">
+    <h2 class="mt-5">顧客情報</h2>
+    <thead>
+      <tr>
+        <th>ユーザー番号</th>
+        <th>年</th>
+        <th>月</th>
+        <th>気温</th>
+        <th>日照時間</th>
+        <th>生産量</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @datasets.each do |dataset| %>
+        <tr>
+          <td><%= dataset.user_id %></td>
+          <td><%= dataset.year %></td>
+          <td><%= dataset.month %></td>
+          <td><%= dataset.temperature %></td>
+          <td><%= dataset.daylight %></td>
+          <td><%= dataset.energy_production %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

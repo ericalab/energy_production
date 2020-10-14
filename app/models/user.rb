@@ -1,5 +1,6 @@
 class User < ApplicationRecord
-
+  has_many :dataset
+  
   def self.import(file)
     CSV.foreach(file.path, headers: true) do |row|
       user = find_by(id: row["id"]) || new
