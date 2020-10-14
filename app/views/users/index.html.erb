@@ -1,31 +1,42 @@
-<%= link_to "Topページへ",  root_path %>
+<div class="container mx-auto">
+  <div class="row">
+    <div class="col-6">
+      <%= form_tag(import_users_path, method: :post, multipart: true) do %>
+        <h2>ファイルの追加</h2>
+        <%= file_field :fileupload, :file %>
+        <%= submit_tag "インポート" %>
+      <% end %>
+    </div>
+    <div class="col-6">
+      <h4><%= link_to "Topページへ",  root_path %></h4>
+    </div>
+  </div>
+</div>
 
-<%= form_tag(import_users_path, method: :post, multipart: true) do %>
-  <label>ファイル</label>
-  <%= file_field :fileupload, :file %>
-  <%= submit_tag "インポート" %>
-<% end %>
-
-<table>
-  <h2 class="mt-5">受注状況</h2>
-  <thead>
-    <tr>
-      <th>ID</th>
-      <th>姓</th>
-      <th>名</th>
-      <th>家族人数</th>
-      <th>子供</th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @users.each do |user| %>
+<div class="container">
+  <table class="table table-hover">
+    <h2 class="mt-5">受注状況</h2>
+    <thead>
       <tr>
-        <td><%= user.id %></td>
-        <td><%= user.first_name %></td>
-        <td><%= user.last_name %></td>
-        <td><%= user.num_of_people %></td>
-        <td><%= user.has_child %></td>
+        <th>ID</th>
+        <th>姓</th>
+        <th>名</th>
+        <th>都市</th>
+        <th>家族人数</th>
+        <th>子供</th>
       </tr>
-    <% end %>
-  </tbody>
-</table>
+    </thead>
+    <tbody>
+      <% @users.each do |user| %>
+        <tr>
+          <td><%= user.id %></td>
+          <td><%= user.first_name %></td>
+          <td><%= user.last_name %></td>
+          <td><%= user.city %></td>
+          <td><%= user.num_of_people %></td>
+          <td><%= user.has_child %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
