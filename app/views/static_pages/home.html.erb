@@ -10,22 +10,25 @@
     </div>
   </div>
 
-  <div class="title mt-5">
-    <p>三都市の平均電気生産量（月ごと）</p>
-    <small>イギリスの１人あたりの平均電気消費量：413kwh/月</small><br>
-    <small>世帯ごとの平均人数：<%= @num_people_av %></small>
-  </div>
-  <div class="chart col-8 mx-auto mt-2">
-    <%= column_chart @chart_energies, xtitle: "月", ytitle: "生産量", width: "600px", height: "200px" %>
-  </div>
-
-  <div class="title mt-5">
-    <p>都市別の日照時間比較</p>
-  <div class="chart col-8 mx-auto mt-2">
-    <%= column_chart [[1,2], [100,200]], xtitle: "年", ytitle: "生産量", width: "600px", height: "200px" %>
-    <% #= debug(@chart_energies.to_a) %>
+  <div class="first-chart-area mt-5">
+    <div class="title">
+      <p>三都市の平均電気生産量（/月）</p>
+      <small>イギリスの１人あたりの平均電気消費量：413kwh/月</small><br>
+      <small>世帯ごとの平均人数：<%= @num_people_av %></small>
+    </div>
+    <div class="chart col-8 mx-auto mt-2">
+      <%= line_chart @chart_energies, xtitle: "月", ytitle: "生産量", width: "600px", height: "200px" %>
+    </div>
   </div>
 
+  <div class="second-chart-area mt-5">
+    <div class="title">
+      <p>三都市の日照時間比較（/月）</p>
+    </div>
+    <div class="chart col-8 mx-auto mt-2">
+      <%= column_chart @city_daylight %>
+    </div>
+  </div>
 </div>
 
 

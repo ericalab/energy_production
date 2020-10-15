@@ -15,7 +15,4 @@ class User < ApplicationRecord
     end
   end
 
-  # def self.updatable_attributes
-  #   ["id", "first_name", "last_name", "City", "num_of_people", "has_child"]
-  # end
 end
