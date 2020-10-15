@@ -1,10 +1,31 @@
-<div class="container">
-  <h1>ソーラー発電における電気生産量</h1>
-  <p>毎月の平均生産量</p>
-  
-  <%= column_chart @datasets.chart_date, xtitle: "月", ytitle: "生産量", width: "600px", height: "200px" %>
+<div class="container mt-5 text-center">
+  <h1>家庭における電気生産量</h1>
+  <div class="row mt-3">
+    <div class="col-6 text-right mt-5">
+      <img src="/assets/quokka.png" alt="クウォッカのイラスト" class="w-25">
+    </div>
+    <div class="col-6 text-left mt-5">
+      <button class="btn btn-warning mt-3"><%= link_to "データ登録・一覧へ", datasets_path %></button><br>
+      <button class="btn btn-warning mt-3"><%= link_to "顧客登録・一覧へ",  users_path %></button>
+    </div>
+  </div>
 
-  <%= link_to "データ詳細・登録", users_path %>
+  <div class="title mt-5">
+    <p>三都市の平均電気生産量（月ごと）</p>
+    <small>イギリスの１人あたりの平均電気消費量：413kwh/月</small><br>
+    <small>世帯ごとの平均人数：<%= @num_people_av %></small>
+  </div>
+  <div class="chart col-8 mx-auto mt-2">
+    <%= column_chart @chart_energies, xtitle: "月", ytitle: "生産量", width: "600px", height: "200px" %>
+  </div>
+
+  <div class="title mt-5">
+    <p>都市別の日照時間比較</p>
+  <div class="chart col-8 mx-auto mt-2">
+    <%= column_chart [[1,2], [100,200]], xtitle: "年", ytitle: "生産量", width: "600px", height: "200px" %>
+    <% #= debug(@chart_energies.to_a) %>
+  </div>
+
 </div>
 
 

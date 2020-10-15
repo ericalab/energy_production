@@ -13,11 +13,12 @@
 ActiveRecord::Schema.define(version: 2020_10_13_151236) do
 
   create_table "datasets", force: :cascade do |t|
+    t.integer "label"
     t.integer "user_id"
     t.integer "year"
     t.integer "month"
-    t.integer "temperature"
-    t.integer "daylight"
+    t.float "temperature"
+    t.float "daylight"
     t.integer "energy_production"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
