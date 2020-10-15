@@ -3,9 +3,9 @@ class User < ApplicationRecord
   
   def self.import(file)
     CSV.foreach(file.path, headers: true) do |row|
-      user = find_by(id: row["id"]) || new
-      user.first_name = row["first_name"]
-      user.last_name = row["last_name"]
+      user = find_by(id: row["ID"]) || new
+      user.first_name = row["Firstname"]
+      user.last_name = row["Lastname"]
       user.city = row["City"]
       user.num_of_people = row["num_of_people"]
       user.has_child = row["has_child"]
